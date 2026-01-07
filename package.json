@@ -1,6 +1,6 @@
 {
   "name": "exfat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "EXFAT - Frame Data Tool for Windows",
   "author": "EXFAT",
   "main": "main.js",
