@@ -1,89 +1,43 @@
 {
-  "name": "fat-os",
-  "version": "5.6.4",
+  "name": "exfat",
+  "version": "1.0.0",
+  "description": "EXFAT - Frame Data Tool for Windows",
+  "author": "EXFAT",
+  "main": "main.js",
   "private": true,
-  "dependencies": {
-    "@babel/core": "^7.22.6",
-    "@capacitor-community/safe-area": "^7.0.0-alpha.1",
-    "@capacitor/preferences": "^7.0.0",
-    "@ionic-native/core": "^5.36.0",
-    "@ionic/cli": "^7.1.1",
-    "@ionic/core": "^8.3.1",
-    "@ionic/react": "^8.3.1",
-    "@ionic/react-router": "^8.3.1",
-    "@redux-devtools/core": "^3.13.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.5",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.18.38",
-    "@types/react": "^17.0.62",
-    "@types/react-dom": "^17.0.20",
-    "@types/react-redux": "^7.1.25",
-    "@types/react-router": "^5.1.20",
-    "@types/react-router-dom": "^5.3.3",
-    "axios": "^0.21.4",
-    "cordova-plugin-purchase": "^13.6.0",
-    "fuzzball": "^2.1.2",
-    "html-react-parser": "^3.0.16",
-    "ionicons": "^7.4.0",
-    "jetifier": "^2.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.2",
-    "react-markdown": "^6.0.3",
-    "react-redux": "^7.2.9",
-    "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4",
-    "react-scripts": "^5.0.1",
-    "redux": "^4.2.1",
-    "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.4.2",
-    "sass": "^1.63.6",
-    "swiper": "^11.1.15",
-    "typescript": "^4.9.5"
-  },
   "scripts": {
-    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "android:test": "ionic cap sync android && ionic cap open android",
-    "android:beta": "ionic cap sync android && (cd android && bundle exec fastlane beta)",
-    "android:release": "ionic cap sync android && (cd android && bundle exec fastlane release)",
-    "ios:release": "ionic cap sync ios && (cd ios/App && fastlane release)",
-    "web:release": "ionic build --prod --public-url=/fatonline"
+    "start": "electron .",
+    "build": "cd fat && npm run build",
+    "dist": "electron-builder"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+  "build": {
+    "appId": "com.exfat.app",
+    "productName": "EXFAT",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "fat/build/**/*",
+      "assets/**/*"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": "nsis"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Omnisulashu",
+        "repo": "exfat-desktop"
+      }
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/app": "^7.0.0",
-    "@capacitor/cli": "^7.0.0",
-    "@capacitor/clipboard": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
-    "@capacitor/haptics": "^7.0.0",
-    "@capacitor/ios": "^7.0.0",
-    "@capacitor/keyboard": "^7.0.0",
-    "@capacitor/splash-screen": "^7.0.0",
-    "@stylistic/eslint-plugin": "^2.11.0",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "redux-devtools-extension": "^2.13.9"
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.3"
   },
-  "description": "An open source frame data project"
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  }
 }
