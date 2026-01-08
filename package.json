@@ -1,7 +1,7 @@
 {
   "name": "exfat",
-  "version": "1.0.1",
-  "description": "EXFAT - Frame Data Tool for Windows",
+  "version": "1.0.0",
+  "description": "EXFAT Desktop",
   "author": "EXFAT",
   "main": "main.js",
   "private": true,
@@ -11,27 +11,28 @@
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "com.exfat.app",
+    "appId": "com.exfat.desktop",
     "productName": "EXFAT",
     "directories": {
       "output": "dist"
     },
     "files": [
       "main.js",
+      "preload.js",
       "fat/build/**/*",
       "assets/**/*"
     ],
-    "win": {
-      "icon": "assets/icon.ico",
-      "target": "nsis"
-    },
     "publish": [
       {
         "provider": "github",
         "owner": "Omnisulashu",
         "repo": "exfat-desktop"
       }
-    ]
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": "nsis"
+    }
   },
   "devDependencies": {
     "electron": "^29.0.0",
